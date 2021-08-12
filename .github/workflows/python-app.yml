@@ -1,0 +1,32 @@
+
+name: "SMZDM Auto Check-in"
+
+# 早上八点自动签到
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Install requirements
+        run: |
+          pip install requests
+
+      - name: Executing
+        env:
+          COOKIES: ${{ secrets.Cookies }}
+        run: python main.py
