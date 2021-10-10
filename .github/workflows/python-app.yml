@@ -1,5 +1,5 @@
 
-name: "SMZDM Auto Check-in"
+name: "SMZDM-Auto-Check-in"
 
 # 早上八点自动签到
 on:
